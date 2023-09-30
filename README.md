@@ -24,17 +24,21 @@ For the analysis, a single Sentinel-2 scene that covered the entire study area w
 The estimation of biomass was conducted using the R programming language and a Random Forest regression algorithm. Initially, the models input data was imported. In addition to field data such as canopy height and chlorophyll content, a total of six different vegetation indices (VIs), specifically NDVI, NDRE, SAVI, GNDVI, EVI, and CI, were incorporated as predictors for estimating above-ground biomass of winterwheat. These VIs were computed from a Sentinel-2 multispectral image covering the sturdy area. The image was clipped to the extent of the two experimental fields and the VI values were extracted for the point coordinates of the different plots. Subsequently, these values were merged with the field data, and any rows containing NA values were removed. After this data cleansing step, we were left with 47 data points, which is a relatively limited amount of data for a random forest regression. 
 To address this issue and expand the sample size to 100 data points, we employed bootstrapping. This involved randomly resampling our existing data to create new training datasets. This process effectively augmented the sample size, allowing the random forest model to learn from a broader range of data variations, resulting in more robust and generalizable outcomes.
 Following the pre-processing, the data was split into training data for constructing and fitting the model and testing data for making predictions on unseen data. The split ratio was set to 80% for training and 20% for testing. Subsequently, the model was fitted using the 'randomForest' function from the 'randomForest' R package, employing 100 trees for growing the random forest and randomly sampling three variables at each split. The determination of the number of variables was accomplished using the 'tuneRF' function to identify the optimal mtry parameter. 
-After running the initial random forest model, we plotted the variable importance and ran a second model using only the four most important varibales. Predictions were then performed on the testing data and subsequently extented to cover the entire two experimental fields to estimate the above-ground biomass. Finally, the results were visualized. 
+After running the initial random forest model, we plotted the variable importance was plotted. Predictions were then performed on the testing data and subsequently extented to cover the entire two experimental fields to estimate the above-ground biomass. Finally, the results were visualized. 
 
 ## 3. Results
-Before running the random forest model, the above-ground biomass at all 47 plots was visualized.
+Prior to executing the  Random Forest model, the above-ground biomass was visually examined across all 47 plots.
 
 ![AGB_Plots](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e8b333da-a2de-49f6-9c62-696cca48352a)
 
-The wet weight is strongly fluctuating between the different plots but also between the two experimental fields. On the first field weights between ~48g to ~66g were measured and on the second field values between ~57g to ~93g were observable.
-Additionally, the different predictors were plotted against the wet weight (above-ground biomass) to get a first overview of the relation between the variables.
+It was observed, that the wet weight exhibited significant fluctuations not only between the different plots but also between the two experimental fields. On the first field, weights ranged from approximately 48g to  around 66g, while on the second field values ranging from approximately 57g to around 93g were observable.
+Furthermore, scatterplots to visualize the relationship between the different predictors and the wet weight (above-ground biomass) were generated.
 
 ![ABG_Predictors](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/76224405-7b9a-41c7-82b3-2c456aefa2d8)
 
-The results of the scatterplots suggested, that all predictors show a positive relationship with the wet weight, even though for most variables the positive correlation seems to be rather low. Based on the plotted linear models it was assumed that CI as well as NDRE would have the highest importance for predicting the wet weight.
-Additionally, the 
+The results of these scatterplots indicate, that all predictors exhibited a positive relationship with the wet weight. However, for most variables, the positive correlation appeared to be relatively low. Based on the linear models depicted in the plots, it was assumed that CI as well as NDRE would hold the highest importance for predicting the wet weight.
+Subsequent to running the initial random forest model, analysis of the variable importance of the predictors was conducted.
+
+![VariableImportance_2](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/b5fd09de-e2c5-47c4-a081-5894cf3964da)
+
+The results indicate that CI and NDVI had by far the greatest impact on the model's prediction. Additionally, NDRE, EVI, and SAVI were also identified as important variables contributing to the model's performance. Interestingly, the field data collected, such as canopy height and chlorophyll content, were found to be the least important parameters for predicting the wet weight.
