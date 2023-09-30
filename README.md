@@ -6,6 +6,10 @@ Crop biomass is a globally important climate-relevant terrestrial carbon pool an
 ## 2. Material and Methods
 
 ### 2.1 Study Area
+
+![Demmin_Overview](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/c631228c-b2f0-41a3-b92f-fed03abc1b6a)
+
+
 The study area consisted of two winterwheat fields within the larger DEMMIN (Durable Environmental Multidisciplinary Monitoring Information Network) experimental area located about 180km north of Berlin in the state of Mecklenburg-Vorpommern in the northeast German lowlands. Todays young moraine landscape with its numerous lakes and bogs is characterized by typical periglacial landscape elements such as extensive flat sandy areas, hills, and depressions. DEMMIN has been operated for about 20 years as a calibration and validation test site for remote sensing data by the German Aerospace Center (DLR). 
 
 ### 2.2 Data
@@ -17,5 +21,5 @@ At each of the individual plots, the canopy height, wet weight, and chlorophyll 
 For the analysis, a single Sentinel-2 scene that covered the entire study area was utilized. This scene was acquired on 3rd of June 2023, which coincided with the final day of the field data collection. To calculate the vegetation indices, the red, green, and near infrared band were used. The spatial resolution for all three of these bands was 20 meters. The images were composited and retrieved from the Sentinel Hub EO Browser. 
 
 ### 2.3 Biomass Estimation
-
+The biomass estimation was carried out using R programming language and a Random Forest regression algorithm. First, the input for the model was read in. Besides data from the field, like canopy height and chlorophyll content, a total of six different vegetation indices (VIs), namely NDVI, NDRE, SAVI, GNDVI, EVI, and CI, were selected and used as predictors to estimate above-ground biomass of winterwheat. All of the VIs were calculated from a Sentinel-2 multispectral image of the sturdy area. The image was clipped to the extent of the two experimental fields and the VI values extracted for the point coordinates of the different plots. The values were then merged with the field data and rows containing NA values removed. After this step, the we were left with 47 data points, which is a very limited amount of data for a random forest regression. To account for this problem and increase the sample size to 100 data points, we coducted bootstrapping in order to randomly resample our existing data to create new training datasets. This process effectively increases the sample size, allowing the random forest model to learn from more variations in the data, which leads to more robust and generalizable results. After the pre-processing, the data was split into training data for building and fitting the model and testing data for making predictions on unseen data. The split ratio was 80% for training and 30% for testing. Then the model was fitted using the 'randomForest' function from the 'randomForest' R package. We used 100 trees to grow the random Forest and three variables that were randomly sampled at each split. The number of variables were determined using the function 'tuneRF' for the optimal mtry parameter. After running the first RF model, the variable importance was plotted and the model run a second time only with the four most important varibales. Then, predictions were performed on the testing data and then on the entire two experimental fields to estimate the above-ground biomass. Finally, the results were visualized. 
 
