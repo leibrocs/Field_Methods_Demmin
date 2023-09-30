@@ -26,3 +26,15 @@ To address this issue and expand the sample size to 100 data points, we employed
 Following the pre-processing, the data was split into training data for constructing and fitting the model and testing data for making predictions on unseen data. The split ratio was set to 80% for training and 20% for testing. Subsequently, the model was fitted using the 'randomForest' function from the 'randomForest' R package, employing 100 trees for growing the random forest and randomly sampling three variables at each split. The determination of the number of variables was accomplished using the 'tuneRF' function to identify the optimal mtry parameter. 
 After running the initial random forest model, we plotted the variable importance and ran a second model using only the four most important varibales. Predictions were then performed on the testing data and subsequently extented to cover the entire two experimental fields to estimate the above-ground biomass. Finally, the results were visualized. 
 
+## 3. Results
+Before running the random forest model, the above-ground biomass at all 47 plots was visualized.
+
+![AGB_Plots](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e8b333da-a2de-49f6-9c62-696cca48352a)
+
+The wet weight is strongly fluctuating between the different plots but also between the two experimental fields. On the first field weights between ~48g to ~66g were measured and on the second field values between ~57g to ~93g were observable.
+Additionally, the different predictors were plotted against the wet weight (above-ground biomass) to get a first overview of the relation between the variables.
+
+![ABG_Predictors](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/76224405-7b9a-41c7-82b3-2c456aefa2d8)
+
+The results of the scatterplots suggested, that all predictors show a positive relationship with the wet weight, even though for most variables the positive correlation seems to be rather low. Based on the plotted linear models it was assumed that CI as well as NDRE would have the highest importance for predicting the wet weight.
+Additionally, the 
