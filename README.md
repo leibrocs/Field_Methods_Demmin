@@ -27,6 +27,10 @@ Following the pre-processing, the data was split into training data for construc
 After running the initial random forest model, we plotted the variable importance was plotted. Predictions were then performed on the testing data and subsequently extented to cover the entire two experimental fields to estimate the above-ground biomass. Finally, the results were visualized. 
 
 ## 3. Results
+To start the analysis, the Sentinel-2 scene, the two experimental fields as well as the six different study sites were plotted for a first overview.
+
+![Overview_Plot](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/4cb93baa-167a-45d3-9baf-ccbaa17ae6aa)
+
 Prior to executing the  Random Forest model, the above-ground biomass was visually examined across all 47 plots.
 
 ![AGB_Plots](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e8b333da-a2de-49f6-9c62-696cca48352a)
@@ -39,6 +43,7 @@ Furthermore, scatterplots to visualize the relationship between the different pr
 The results of these scatterplots indicate, that all predictors exhibited a positive relationship with the wet weight. However, for most variables, the positive correlation appeared to be relatively low. Based on the linear models depicted in the plots, it was assumed that CI as well as NDRE would hold the highest importance for predicting the wet weight.
 Subsequent to running the initial random forest model, analysis of the variable importance of the predictors was conducted.
 
-![VariableImportance_2](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/b5fd09de-e2c5-47c4-a081-5894cf3964da)
+![variable_importance_44](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/ff7c3ed8-b2f5-42e0-b4be-77d1abf9803b)
 
-The results indicate that CI and NDVI had by far the greatest impact on the model's prediction. Additionally, NDRE, EVI, and SAVI were also identified as important variables contributing to the model's performance. Interestingly, the field data collected, such as canopy height and chlorophyll content, were found to be the least important parameters for predicting the wet weight.
+The results indicate that NDRE, CI and SAVI had the greatest impact on the model's prediction, which is in agreement with the results from the linear models. Additionally, chlorophyll content as well as canopy height, were also identified as important variables contributing to the model's performance. Interestingly, regularly used indices for biomass prediction, such as the NDVI and EVI, were found to be the least important parameters for predicting the wet weight.
+The fitted random forest model had a mean of squared residuals of 44.94 and a variance of 55.92%. Additionally, a RMSE of 6.70 was computed. The second RF model only using the six different VIs as predictors was only able to achive a mean of squared residuals of 55.34 and a variance of 45.73%. 
