@@ -28,33 +28,33 @@ After running the initial random forest model, a second model with identical set
 
 ## 3. Results
 To start the analysis, the Sentinel-2 scene, the two experimental fields as well as the six different study sites were plotted for a first overview.
-
-![Overview_Plot](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/4cb93baa-167a-45d3-9baf-ccbaa17ae6aa)
-
+<p align="center">
+  <img src = "https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/4cb93baa-167a-45d3-9baf-ccbaa17ae6aa">
+</p>
 Prior to executing the  Random Forest model, the above-ground biomass was visually examined across all 47 plots. 
-
-![AGB_Plots](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e8b333da-a2de-49f6-9c62-696cca48352a)
-
+<p align="center">
+  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e8b333da-a2de-49f6-9c62-696cca48352a">
+</p>
 It was observed, that the wet weight exhibited significant fluctuations not only between the different plots but also between the two experimental fields. On the first field, weights ranged from approximately 48g to  around 66g, while on the second field values ranging from approximately 57g to around 93g were observable.
 Furthermore, scatterplots to visualize the relationship between the different predictors and the wet weight (above-ground biomass) were generated.
-
-![ABG_Predictors](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/76224405-7b9a-41c7-82b3-2c456aefa2d8)
-
+<p align="center">
+  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/76224405-7b9a-41c7-82b3-2c456aefa2d8">
+</p>
 The results of these scatterplots indicate, that all predictors exhibited a positive relationship with the wet weight. However, for most variables, the positive correlation appeared to be relatively low. Based on the linear models depicted in the plots, it was assumed that CI as well as NDRE would hold the highest importance for predicting the wet weight.
 Subsequent to running the initial random forest model, analysis of the variable importance of the predictors was conducted.
-
-![variable_importance_44_visualized](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e28df21a-4bba-4ca7-aea9-13d4cbb4681a)
-
+<p align="center">
+  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/e28df21a-4bba-4ca7-aea9-13d4cbb4681a">
+</p>
 The results indicate that NDRE, CI and SAVI had the greatest impact on the model's prediction, which is in agreement with the results from the linear models. Additionally, chlorophyll content as well as canopy height, were also identified as important variables contributing to the model's performance. Interestingly, regularly used indices for biomass prediction, such as the NDVI and EVI, were found to be the least important parameters for predicting the wet weight.
 The analysis of the accuracy of the fitted random forest returned, that the initial model had a mean of squared residuals of 44.94 and a variance of 55.92%. Additionally, a RMSE of 6.70 was computed. Attemps to enhance the performance of the model were made through tuning the hyperparameters, like the numer of trees, and predictor modifications. However, these efforts were not successful. Consequently, alternative models, such as Support Vector Machines and linear models, were explored, but they also failed to yield better predictive results. Given these outcomes, we opted to retain our original model configuration and utilized it for the further analysis.
-
+<p align="center">
 <img width="850" alt="RF_Model_Evaluation_44" src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/2290852f-0e40-4878-8a97-db6058bc1cfa">
-
+</p>
 The comparison between the predicted and actual wet weight from the test data revealed a rather irregular outcome. In some instances, the predicted values closely approximated the actual values, deviating only slightly above or below them. However, in other cases, there were substantial discrepancies between predictions and the field data. The prediction errors spanned from minor over- and under-predictions to errors exceeding 10g or more.
 The second RF model, which exclusively employed the six different VIs as predictors, exhibited an even poorer performance. It achieved only a mean of squared residuals of 55.34 and a variance of 45.73%. Nevertheless, due to the inability to enhance the accuracy, this model was still utilized to estimate the wet weight of the entire expanse of the two experimental fields. Subsequently, the estimated values were visualized using ggplot2. In the plot, areas with nearly zero biomass were discernable, alongside regions, where the biomass appeared to significantly exceed 70g. Notably, these high biomass areas were located in the lower-left corner of the first field as well as the upper half of the second field. The areas on the fields where no winterwheat was cultivated correspond with the parts of the prediction displaying low biomass values. Moreover, upon visual inspection of the original Sentinel-2 scene, it became apparent that the lower part of the second field exhibited a different growth stage, aligning with the outcomes of the random forest model. This obervation reinforces the model's results, suggesting varying above-ground biomass in different sections of the second field.
-
-![PredictedAGB_Fields](https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/86930e34-862c-4c9c-90de-ce69d4ad3e38)
-
+<p align="center">
+  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/86930e34-862c-4c9c-90de-ce69d4ad3e38">
+</p>
 ## 4. Discussion
 For this analysis, we estimated the above-ground biomass, represented as wet weight, for two experimental winterwheat fields located in the northeast German lowlands. To achieve this, two random forest models were constructed:
 1. The first model utilized a combination of field data, such as canopy height and chlorophyll content, alongside six VIs as predictors. However, this model exhibited a somewhat moderate performance, yielding a mean of squared residuals of 44.94, a variance of 55.92%, and a RMSE of 6.70. This unsatisfactory accuracy may be attributed to the limited number and quality of data points available for model training. Having a relatively small dataset can pose challenges for building robust machine learning models, as these models may struggle to capture complex relationships within the data. Collecting more data could potentially enhance the performance by providing more information for model training. Another potential reason for prediction inaccuracy could be the inherent variability associated with data collection. Despite the existence of detailled protocols for the sampling procedure, the involvement of multiple different students in data collection may introduce inconsistencies and inaccuracies into the dataset. This can lead to noisy and less reliable data, which can affect the model's ability to generalize pattern effectively. Addressing this problem could involve reviewing the data thoroughly to identify outliers, but this potentially further reduce the size of the dataset.
