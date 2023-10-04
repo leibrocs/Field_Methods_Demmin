@@ -67,5 +67,7 @@ In summary, the choice of predictors and dataset size are crucial considerations
 
 ## Literature
 [1] Kharel TP, Bhandari AB, Mubvumba P, Tyler HL, Fletcher RS, Reddy KN. Mixed-Species Cover Crop Biomass Estimation Using Planet Imagery. Sensors (Basel). 2023;23(3):1541. Published 2023 Jan 31. doi:10.3390/s23031541
+
 [2] Marshall, M., Belgiu, M., Boschetti, M., Pepe, M., Stein, A., and Nelson, A., “Field-level crop yield estimation with PRISMA and Sentinel-2”, <i>ISPRS Journal of Photogrammetry and Remote Sensing</i>, vol. 187, pp. 191–210, 2022. doi:10.1016/j.isprsjprs.2022.03.008
+
 [3] Peng J, Zeiner N, Parsons D, Féret J-B, Söderström M, Morel J. Forage Biomass Estimation Using Sentinel-2 Imagery at High Latitudes. Remote Sensing. 2023; 15(9):2350. https://doi.org/10.3390/rs15092350
