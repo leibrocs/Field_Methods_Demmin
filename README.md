@@ -38,7 +38,8 @@ Prior to executing the  Random Forest model, the above-ground biomass was plotte
 It was observed, that the wet weight exhibited significant fluctuations not only between the different plots but also between the two experimental fields. On the first field, weights ranged from approximately 48g to  around 66g, while on the second field values ranging from approximately 57g to around 93g were observable.
 Furthermore, scatterplots to visualize the relationship between the different predictors and the wet weight (above-ground biomass) were generated:
 <p align="center">
-  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/76224405-7b9a-41c7-82b3-2c456aefa2d8">
+  <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/55bd2fa1-1542-4e92-9f6c-06be97317f75">
+">
 </p>
 The results of these scatterplots indicate, that all predictors exhibited a positive relationship with the wet weight. However, for most variables, the positive correlation appeared to be relatively low. Based on the linear models depicted in the plots, it was assumed that CI as well as NDRE would hold the highest importance for predicting the wet weight.
 Subsequent to running the initial random forest model, analysis of the variable importance of the predictors was conducted:
@@ -55,6 +56,7 @@ The second RF model, which exclusively employed the six different VIs as predict
 <p align="center">
   <img src="https://github.com/leibrocs/Field_Methods_Demmin/assets/116877154/86930e34-862c-4c9c-90de-ce69d4ad3e38">
 </p>
+
 ## 4. Discussion
 For this analysis, we estimated the above-ground biomass, represented as wet weight, for two experimental winterwheat fields located in the northeast German lowlands. To achieve this, two random forest regression models were constructed:
 1. The first model utilized a combination of field data, such as canopy height and chlorophyll content, alongside six VIs as predictors. However, this model exhibited a somewhat moderate performance, yielding a mean of squared residuals of 44.94, a variance of 55.92%, and a RMSE of 6.70. This unsatisfactory accuracy may be attributed to the limited number and quality of data points available for model training. Having a relatively small dataset can pose challenges for building robust machine learning models, as these models may struggle to capture complex relationships within the data. Collecting more data could potentially enhance the performance by providing more information for model training. Another potential reason for prediction inaccuracy could be the inherent variability associated with data collection. Despite the existence of detailled protocols for the sampling procedure, the involvement of multiple different students in data collection may introduce inconsistencies and inaccuracies into the dataset. This can lead to noisy and less reliable data, which can affect the model's ability to generalize pattern effectively. One potential approach to address this problem could involve a comprehensive data reviewing to identify and remove outliers. However, it is important to note, that this process may further reduce the size of the dataset. To circumvent this challenge, one viable solution could be to incorporate data from previous years, thus mitigating the impact of reduced dataset size while improving the model's overall performance.
